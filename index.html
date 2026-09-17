@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111a17">
+  <title>书中人｜我的文学人格身份证</title>
+  <meta name="description" content="20道题，找到与你最接近的经典文学人物人格原型，并生成你的文学人格档案。">
+  <link rel="stylesheet" href="style.css?v=8.6">
+</head>
+<body>
+<main class="app">
+  <section id="home" class="screen hero">
+    <div class="wrap hero-wrap">
+      <div class="eyebrow">THE CHARACTER WITHIN · 书中人</div>
+      <h1>如果把你<br>写进一本书。</h1>
+      <p>20道题，找到那个与你共振的文学角色。不是替你下定义，而是借一位“书中人”，照见你身上值得被重新理解的部分。</p>
+      <div class="hero-actions">
+        <button id="startBtn" class="btn gold">翻开第一页</button>
+        <button class="btn ghost" id="methodBtn">它怎么测？</button>
+        <button class="btn ghost" id="resumeBtn" hidden>继续上次测试</button>
+      </div>
+      <div class="hero-foot">约 3–5 分钟 · 24 种文学人格 · 4 页视觉档案 · 深度解读</div>
+    </div>
+  </section>
+
+  <section id="focus" class="screen">
+    <div class="wrap"><div class="card intro-card">
+      <div class="chapter">序章 · BEFORE THE STORY</div>
+      <h2>在故事开始以前，<br>你最想看见自己的哪一面？</h2>
+      <p>这道题不参与计分，只会成为你阅读结果时的一条私人线索。</p>
+      <div id="focusOptions" class="prompt-list"></div>
+    </div></div>
+  </section>
+
+  <section id="quiz" class="screen">
+    <div class="topbar"><div class="inner"><span id="qIndex" class="qnum"></span><div class="progress"><i id="prog"></i></div></div></div>
+    <div class="wrap"><div class="card question-card">
+      <button id="qBack" class="text-back" type="button">← 上一页</button>
+      <div id="qChapter" class="chapter"></div>
+      <div id="qTitle" class="question-kicker"></div>
+      <h2 id="qText"></h2>
+      <div id="scale" class="scale"></div>
+      <p class="hint">按你过去半年大多数时候的真实状态作答，而不是“理想中的自己”。</p>
+    </div></div>
+  </section>
+
+  <section id="clarify" class="screen">
+    <div class="wrap"><div class="card question-card clarify-card">
+      <div id="cIndex" class="chapter"></div>
+      <h2 id="clarifyTitle">你的两个文学原型非常接近，再补一页。</h2>
+      <p id="cText"></p>
+      <div id="cScale" class="scale"></div>
+      <p class="hint">补测只在结果过于接近或答卷区分度不足时出现，用来减少“硬贴标签”。</p>
+    </div></div>
+  </section>
+
+  <section id="lowinfo" class="screen">
+    <div class="wrap"><div class="card question-card lowinfo-card">
+      <div class="chapter">这一页暂时没有角色</div>
+      <h2>你的答案太集中，系统不想硬给你贴标签。</h2>
+      <p id="lowInfoDetail"></p>
+      <p class="hint">宁可让你重测，也不把一份中性答卷强行解释成某个文学人物。</p>
+      <button id="lowRestart" class="btn gold wide">重新翻开第一页</button>
+    </div></div>
+  </section>
+
+  <section id="loading" class="screen loading">
+    <div><div class="bookpulse">⌁</div><h2>正在翻阅你的性格星图……</h2><p>比较五维倾向 · 匹配 24 个文学原型 · 生成你的私人档案</p></div>
+  </section>
+
+  <section id="reveal" class="screen reveal-screen">
+    <div class="wrap reveal-wrap">
+      <div class="reveal-book">
+        <div class="chapter light">THE CHARACTER WITHIN</div>
+        <div class="reveal-mark">✦</div>
+        <h2>你的“书中人”<br>已经找到了。</h2>
+        <p id="revealHint">有一种熟悉的力量，正在这一页等你。</p>
+        <button id="revealBtn" class="btn gold">揭晓我的文学人格</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="result" class="screen">
+    <div class="wrap">
+      <div class="chapter">你的文学人格身份证</div>
+
+      <section class="gallery result-gallery-first">
+        <div class="section-label">YOUR COLLECTIBLE PAGES</div>
+        <h2>先翻开你的文学人格长卷</h2>
+        <p>上方是与你结果对应的长图档案。图片上方有一句与你最贴近的话，文字与图片分离显示，便于阅读与保存。</p>
+        <div class="gallery-stage">
+          <div id="slides" class="slides"></div>
+        </div>
+      </section>
+
+      <div class="result-hero">
+        <div id="rId" class="persona-id"></div>
+        <div id="rWork" class="eyebrow"></div>
+        <h1 id="rName"></h1>
+        <div id="rSub" class="subtitle"></div>
+        <div id="rChips" class="chips"></div>
+        <p id="rJudge"></p>
+        <div class="match-meta"><span id="confidence"></span><span id="second"></span></div>
+      </div>
+
+      <p id="focusEcho" class="report-note"></p>
+
+      <section class="identity-note">
+        <div class="identity-note-label">给你的第一句确认</div>
+        <blockquote id="affirmation"></blockquote>
+      </section>
+
+      <div class="scorebox">
+        <div class="section-label">YOUR FIVE-DIMENSION MAP</div>
+        <h2>你的五维星图</h2>
+        <div id="radar"></div>
+        <div id="scoreLegend" class="score-legend"></div>
+      </div>
+
+      <div class="actions">
+        <button id="downloadShare" class="btn gold">生成分享身份证</button>
+        <button id="copyShare" class="btn">复制分享文案</button>
+      </div>
+
+      <section class="deep-report">
+        <div class="section-label">PRIVATE LITERARY PROFILE</div>
+        <h2>你的私人文学档案</h2>
+        <p class="report-note">不是角色剧情介绍，而是把你的五维倾向翻译成更容易理解、确认和收藏的文学语言。</p>
+        <div id="report"></div>
+      </section>
+
+      <details class="method">
+        <summary>这份结果是怎么得出的？</summary>
+        <p id="methodRank"></p>
+        <p>核心分数来自五个连续维度，每个维度由 4 道正/反向题共同计分；角色只是对这些连续分数的文学化映射。若前两名过近，系统会自动追加澄清题。</p>
+        <p>这是一套结构化的娱乐性自我探索产品，不是临床心理诊断，也不替代经过正式常模验证的专业量表。</p>
+      </details>
+
+      <div class="actions final-actions"><button id="restart" class="btn ghost dark-ghost">重新测试</button></div>
+      <div class="footer">结果仅保存在你的浏览器本地，不上传答题数据。<br>本产品为非官方文学主题创作，与原著作者、出版社及影视版权方无官方关联。<br>© 书中人 · 文学人格档案</div>
+    </div>
+  </section>
+</main>
+
+<div id="methodModal" class="modal">
+  <div class="box">
+    <button id="closeMethod" class="close">×</button>
+    <div class="section-label">METHOD</div>
+    <h2>这套测试怎么工作？</h2>
+    <p>底层使用五个连续人格维度：开放与想象 O、秩序与执行 C、外向活力 E、共情与合作 A、情绪稳定 S。20 道题平均分布到五个维度，并混合正向与反向题。</p>
+    <p>随后把你的五维向量与 24 个文学角色原型向量进行相似度匹配，不随机抽角色。如果第一名与第二名过于接近，会追加 5 道澄清题；如果整份答卷长期集中在同一个选项，系统会先补测，仍缺乏区分度则不会强行给角色。</p>
+    <p><b>重要：</b>文学角色映射尚未经过大样本常模验证，因此适合作为结构化、可重复的娱乐性自我探索，不应宣传为医学或临床意义上的“心理诊断”。</p>
+  </div>
+</div>
+
+<script src="data.js?v=8.6"></script>
+<script src="app.js?v=8.6"></script>
+</body></html>
